@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sites_categories', function (Blueprint $table) {
+        Schema::create('categories_sites', function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->foreignUlid('category_id')->index();
             $table->foreignUlid('site_id');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sites_categories');
+        Schema::dropIfExists('categories_sites');
     }
 };
