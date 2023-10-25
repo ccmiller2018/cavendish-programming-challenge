@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('url')->unique();
             $table->text('description');
-            $table->boolean('visible');
+            $table->boolean('visible')->default(false);
             $table->timestamps();
         });
     }
