@@ -12,8 +12,8 @@ class SiteFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->words(3),
-            'url' => $this->faker->url,
+            'name' => $this->faker->sentence,
+            'url' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'visible' => false,
         ];

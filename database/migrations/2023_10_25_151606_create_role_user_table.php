@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories_sites', function (Blueprint $table) {
-            $table->ulid('id')->primary();
-            $table->foreignUlid('category_id')->index();
-            $table->foreignUlid('site_id');
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->id();
+            $table->foreignUlid('role_id');
+            $table->foreignUlid('user_id');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories_sites');
+        Schema::dropIfExists('roles_users');
     }
 };
