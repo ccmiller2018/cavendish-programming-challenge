@@ -1,19 +1,19 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Categories\Sites\ListSitesInCategoryController;
+use App\Http\Controllers\Api\Sites\SearchSitesController;
+use App\Http\Controllers\Api\Sites\SingleSiteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Categories\ListCategoriesController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+Route::get('/categories', ListCategoriesController::class)
+    ->name('api.categories.list');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/categories/{category}', ListSitesInCategoryController::class)
+    ->name('api.category');
+
+Route::post('/sites/search', SearchSitesController::class)
+    ->name('api.sites.search');
+
+Route::get('/sites/{site}', SingleSiteController::class)
+    ->name('api.site');

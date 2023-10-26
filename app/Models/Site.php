@@ -14,6 +14,8 @@ class Site extends Model
     use HasFactory;
     use HasUlids;
 
+    protected $perPage = 50;
+
     protected $fillable = [
         'name',
         'url',
@@ -26,6 +28,10 @@ class Site extends Model
     }
 
     public function categories(): BelongsToMany {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Site::class);
+    }
+
+    public function votes(): HasMany {
+        return $this->HasMany(Vote::class);
     }
 }
