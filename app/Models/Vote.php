@@ -10,4 +10,9 @@ class Vote extends Model
 {
     use HasFactory;
     use HasUlids;
+
+    protected $fillable = [
+        'user_id',
+        'site_id',
+    ];
 }

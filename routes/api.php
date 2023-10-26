@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Categories\Sites\ListSitesInCategoryController;
 use App\Http\Controllers\Api\Sites\SearchSitesController;
 use App\Http\Controllers\Api\Sites\SingleSiteController;
+use App\Http\Controllers\Api\Sites\VoteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Categories\ListCategoriesController;
 
@@ -34,3 +35,7 @@ Route::post('/sites/search', SearchSitesController::class)
 
 Route::get('/sites/{site}', SingleSiteController::class)
     ->name('api.site');
+
+Route::get('/sites/{site}/vote', VoteController::class)
+    ->middleware('auth:sanctum')
+    ->name('api.site.vote');
