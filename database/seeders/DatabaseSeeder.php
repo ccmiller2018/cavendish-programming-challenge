@@ -46,12 +46,12 @@ class DatabaseSeeder extends Seeder
             ->count(10000)
             ->create()
             ->each(function ($site) use ($categories) {
+                $catIds = $categories->pluck('id')
+                    ->random(random_int(1, 5))
+                    ->all();
+
                 $site->categories()
-                    ->sync(
-                        $categories->pluck('id')
-                            ->random(random_int(1, 5))
-                            ->all()
-                    );
+                    ->attach($catIds);
             });
     }
 }

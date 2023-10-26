@@ -28,7 +28,7 @@ class Site extends Model
     }
 
     public function categories(): BelongsToMany {
-        return $this->belongsToMany(Site::class);
+        return $this->belongsToMany(Category::class);
     }
 
     public function votes(): HasMany {
