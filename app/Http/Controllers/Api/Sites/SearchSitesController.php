@@ -12,6 +12,9 @@ class SearchSitesController extends Controller
     {
         $data = $request->safe();
 
-        return SiteSearcher::find(...$data)->paginate();
+        return SiteSearcher::find(...$data)
+            ->withCount('votes')
+            ->orderBy('votes_count')
+            ->paginate();
     }
 }
