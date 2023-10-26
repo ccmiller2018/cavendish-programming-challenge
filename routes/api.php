@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Auth\MeController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Categories\Sites\ListSitesInCategoryController;
 use App\Http\Controllers\Api\Sites\CreateController;
+use App\Http\Controllers\Api\Sites\DeleteController;
 use App\Http\Controllers\Api\Sites\SearchSitesController;
 use App\Http\Controllers\Api\Sites\SingleSiteController;
 use App\Http\Controllers\Api\Sites\UpdateController;
@@ -44,6 +45,9 @@ Route::post('/sites', CreateController::class)
 Route::get('/sites/{site}', SingleSiteController::class)
     ->name('api.site');
 
+Route::delete('/sites/{site}', DeleteController::class)
+    ->middleware('auth:sanctum', IsAdministrator::class)
+    ->name('api.site.delete');
 
 Route::put('/sites/{site}', UpdateController::class)
     ->middleware('auth:sanctum', IsAdministrator::class)

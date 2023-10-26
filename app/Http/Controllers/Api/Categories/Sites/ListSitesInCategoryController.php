@@ -17,6 +17,7 @@ class ListSitesInCategoryController extends Controller
         return $category->sites()
             ->where('visible', '=', 1)
             ->withCount('votes')
+            ->orderBy('votes_count')
             ->paginate();
     }
 }
